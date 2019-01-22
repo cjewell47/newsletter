@@ -1,5 +1,12 @@
+$white: #fff;
+$light-blue: #b4d8e6;
+
 body {
-    h1 {
-        color: red;
+    background: $white;
+    margin: 0;
+    .wrapper {
+        background: $light-blue;
+        width: 1180px;
+        margin: 47px auto;
     }
 }
