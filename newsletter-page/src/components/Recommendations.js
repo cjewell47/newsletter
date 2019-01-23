@@ -7,11 +7,8 @@ const Recommendations = () => {
     return (
         <div className="Recommendations">
             <h1>Book Recommendations Just for You</h1>
-            <h4>
-                Choose from the categories below and we will send you information
-                about books you will love
-        </h4>
-            <div className="category-container">
+            <h4>Choose from the categories below and we will send you information about books you will love</h4>
+            <div className="categories-container">
                 {categories.map((category, i) => <Category category={category} key={i} />)}
             </div>
         </div>

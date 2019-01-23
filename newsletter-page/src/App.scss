@@ -1,9 +1,23 @@
 $light-blue: #b4d8e6;
+$white: #fff;
 
 .App {
   text-align: center;
+
   .Recommendations {
     background-color: $light-blue;
     padding: 50px;
+
+    .categories-container {
+      @supports (display: grid) {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+
+        .Category {
+          background: $white;
+        }
+      }
+    }
   }
 }
