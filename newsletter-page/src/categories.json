@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Children's",
+        "image": "./images/childrens.jpg"
+    },
+    {
+        "name": "Crafts & Hobbies",
+        "image": "./images/craft.jpg"
+    },
+    {
+        "name": "Education & Teachers",
+        "image": "./images/education.jpg"
+    },
+    {
+        "name": "Food & Drink",
+        "image": "./images/food.jpg"
+    },
+    {
+        "name": "Gardening",
+        "image": "./images/gardening.jpg"
+    },
+    {
+        "name": "Health & Fitness",
+        "image": "./images/health.jpg"
+    },
+    {
+        "name": "History & Reference",
+        "image": "./images/history.jpg"
+    },
+    {
+        "name": "Lego Books",
+        "image": "./images/lego.jpg"
+    },
+    {
+        "name": "Marvel",
+        "image": "./images/marvel.jpg"
+    },
+    {
+        "name": "Pregnancy & Parenting",
+        "image": "./images/pregnancy.jpg"
+    },
+    {
+        "name": "Star Wars",
+        "image": "./images/starwars.jpg"
+    },
+    {
+        "name": "Travel",
+        "image": "./images/travel.jpg"
+    }
+]
