@@ -4,6 +4,7 @@ $grey: #565656;
 $light-grey: #cdcdcd;
 $blue: #0076dc;
 $light-green: #8bb756;
+$red: #e30613;
 $large-tablet: 1024px;
 $tablet: 768px;
 $large-mobile: 450px;
@@ -18,7 +19,8 @@ $mobile: 320px;
   .Recommendations {
     background-color: $light-blue;
     padding: 50px 15px;
-    h1, h4 {
+    h1,
+    h4 {
       margin: auto;
       padding: 0 30px 25px;
     }
@@ -70,7 +72,7 @@ $mobile: 320px;
               content: "";
               position: absolute;
               display: none;
-              background: url('/images/tick.svg');
+              background: url("/images/tick.svg");
               background-repeat: no-repeat;
               background-position: center;
               background-size: 75%;
@@ -98,10 +100,10 @@ $mobile: 320px;
             opacity: 0;
             height: 0;
             width: 0;
-            &:hover~.category-checkmark {
+            &:hover ~ .category-checkmark {
               border: 1px solid $blue;
             }
-            &:checked~.category-checkmark {
+            &:checked ~ .category-checkmark {
               background: $light-green;
               &:before {
                 display: block;
@@ -110,9 +112,9 @@ $mobile: 320px;
                 color: $light-green;
                 font-weight: 700;
               }
-            } 
+            }
           }
-        } 
+        }
         .category-logo {
           height: 30px;
           @media (min-width: $large-mobile) {
@@ -121,9 +123,22 @@ $mobile: 320px;
         }
         &.hide-mobile {
           display: none;
-          @media (min-width: $large-mobile) {
+          @media (min-width: $tablet) {
             display: inline-flex;
           }
+        }
+      }
+      .btn {
+        background: red;
+        height: 44px;
+        font-size: 14px;
+        font-weight: 600;
+        color: $white;
+        @media (min-width: $large-mobile) {
+          height: 60px;
+        }
+        @media (min-width: $tablet) {
+          display: none;
         }
       }
     }
