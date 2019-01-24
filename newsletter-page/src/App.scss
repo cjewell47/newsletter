@@ -1,23 +1,117 @@
 $light-blue: #b4d8e6;
 $white: #fff;
+$grey: #565656;
+$light-grey: #cdcdcd;
+$blue: #0076dc;
+$light-green: #8bb756;
+$large-tablet: 1200px;
+$tablet: 991px;
+$mobile: 767px;
 
+* {
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 
   .Recommendations {
     background-color: $light-blue;
-    padding: 50px;
-
+    padding: 50px 15px;
     .categories-container {
-      @supports (display: grid) {
-        display: grid;
-        grid-gap: 20px;
-        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      // @supports (display: grid) {
+      //   display: grid;
+      //   grid-gap: 20px;
+      //   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        max-width: 1400px;
+        margin: auto;
+      // }
 
-        .Category {
-          background: $white;
+      .Category {
+        background: $white;
+        height: 60px;
+        padding: 0 18px;
+        width: 340px;
+        margin: 10px;
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        @media (max-width: $large-tablet) {
+          width: 280px;
+        }
+        @media (max-width: $tablet) {
+          width: 330px;
+        }
+        @media (max-width: $mobile) {
+          width: 280px;
+        }
+        .category-checkbox {
+          cursor: pointer;
+          -webkit-user-select: none;
+          user-select: none;
+          display: block;
+          position: relative;
+          padding-left: 35px;
+          top: -9px;
+          .category-checkmark {
+            position: absolute;
+            top: -4px;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            border: 1px solid $light-grey;
+            &:before {
+              content: "";
+              position: absolute;
+              display: none;
+              background: url('/images/tick.svg');
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: 75%;
+              height: 25px;
+              width: 25px;
+            }
+            &:after {
+              content: attr(data-label);
+              display: block;
+              position: absolute;
+              left: 35px;
+              top: 3px;
+              color: $grey;
+              width: 200px;
+              text-align: left;
+              font-weight: 600;
+              @media (max-width: $large-tablet) {
+                font-size: 14px;
+              }
+            }
+          }
+          input {
+            position: absolute;
+            opacity: 0;
+            height: 0;
+            width: 0;
+            &:hover~.category-checkmark {
+              border: 1px solid $blue;
+            }
+            &:checked~.category-checkmark {
+              background: $light-green;
+              &:before {
+                display: block;
+              }
+              &:after {
+                color: $light-green;
+                font-weight: 700;
+              }
+            } 
+          }
+        } 
+        .category-logo {
+          height: 40px;
         }
       }
     }
+  }
+  .grey {
+    color: $grey;
   }
 }
