@@ -30,15 +30,21 @@ $mobile: 320px;
         grid-gap: 10px;
         max-width: 1400px;
         margin: auto;
-        @media (min-width: $mobile) {
-          grid-template-columns: 1fr;
+        transition: height 0.6s ease-in-out;
+        overflow: hidden;
+        grid-template-columns: 1fr;
+        height: 638px;
+        @media (min-width: $large-mobile) {
+          height: 830px;
         }
         @media (min-width: $tablet) {
           grid-template-columns: 1fr 1fr;
+          height: 410px;
         }
         @media (min-width: $large-tablet) {
           grid-gap: 20px;
           grid-template-columns: repeat(3, minmax(300px, 1fr));
+          height: 300px;
         }
       }
 
@@ -121,26 +127,33 @@ $mobile: 320px;
             height: 40px;
           }
         }
-        &.hide-mobile {
-          display: none;
-          @media (min-width: $tablet) {
-            display: inline-flex;
-          }
+      }
+      &.hidden {
+        @media (max-width: $tablet - 1) {
+          height: 200px;
+        }
+        @media (max-width: $large-mobile - 1) {
+          height: 152px;
         }
       }
-      .btn {
-        background: red;
-        height: 44px;
-        font-size: 14px;
-        font-weight: 600;
-        color: $white;
-        @media (min-width: $large-mobile) {
-          height: 60px;
-        }
-        @media (min-width: $tablet) {
-          display: none;
-        }
-      }
+    }
+  }
+  .btn {
+    background: red;
+    height: 44px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $white;
+    width: 100%;
+    margin: 10px auto;
+    &:focus {
+      outline: none;
+    }
+    @media (min-width: $large-mobile) {
+      height: 60px;
+    }
+    @media (min-width: $tablet) {
+      display: none;
     }
   }
   .grey {

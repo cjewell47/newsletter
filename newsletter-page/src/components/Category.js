@@ -1,9 +1,9 @@
 import React from "react";
 
 const Category = props => {
-  const { category, hideMobile } = props;
+  const { category } = props;
   return (
-    <div className={"Category " + (hideMobile ? "hide-mobile" : "")}>
+    <div className="Category">
       <label className="category-checkbox">
         <input type="checkbox" />
         <span className="category-checkmark" data-label={category.name} />
