@@ -4,9 +4,10 @@ $grey: #565656;
 $light-grey: #cdcdcd;
 $blue: #0076dc;
 $light-green: #8bb756;
-$large-tablet: 1200px;
-$tablet: 991px;
-$mobile: 767px;
+$large-tablet: 1024px;
+$tablet: 768px;
+$large-mobile: 450px;
+$mobile: 320px;
 
 * {
   box-sizing: border-box;
@@ -17,32 +18,38 @@ $mobile: 767px;
   .Recommendations {
     background-color: $light-blue;
     padding: 50px 15px;
+    h1, h4 {
+      margin: auto;
+      padding: 0 30px 25px;
+    }
     .categories-container {
-      // @supports (display: grid) {
-      //   display: grid;
-      //   grid-gap: 20px;
-      //   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      @supports (display: grid) {
+        display: grid;
+        grid-gap: 10px;
         max-width: 1400px;
         margin: auto;
-      // }
+        @media (min-width: $mobile) {
+          grid-template-columns: 1fr;
+        }
+        @media (min-width: $tablet) {
+          grid-template-columns: 1fr 1fr;
+        }
+        @media (min-width: $large-tablet) {
+          grid-gap: 20px;
+          grid-template-columns: repeat(3, minmax(300px, 1fr));
+        }
+      }
 
       .Category {
         background: $white;
-        height: 60px;
-        padding: 0 18px;
-        width: 340px;
-        margin: 10px;
+        height: 44px;
+        padding: 0 14px;
         display: inline-flex;
         justify-content: space-between;
         align-items: center;
-        @media (max-width: $large-tablet) {
-          width: 280px;
-        }
-        @media (max-width: $tablet) {
-          width: 330px;
-        }
-        @media (max-width: $mobile) {
-          width: 280px;
+        @media (min-width: $large-mobile) {
+          height: 60px;
+          padding: 0 18px;
         }
         .category-checkbox {
           cursor: pointer;
@@ -80,8 +87,9 @@ $mobile: 767px;
               width: 200px;
               text-align: left;
               font-weight: 600;
-              @media (max-width: $large-tablet) {
-                font-size: 14px;
+              font-size: 14px;
+              @media (min-width: $tablet) {
+                font-size: 16px;
               }
             }
           }
@@ -106,7 +114,16 @@ $mobile: 767px;
           }
         } 
         .category-logo {
-          height: 40px;
+          height: 30px;
+          @media (min-width: $large-mobile) {
+            height: 40px;
+          }
+        }
+        &.hide-mobile {
+          display: none;
+          @media (min-width: $large-mobile) {
+            display: inline-flex;
+          }
         }
       }
     }

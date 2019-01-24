@@ -10,7 +10,7 @@ const Recommendations = () => {
             <h1>Book Recommendations Just for You</h1>
             <h4 className="grey">Choose from the categories below and we will send you information about books you will love</h4>
             <div className="categories-container">
-                {categories.map((category, i) => <Category category={category} key={i} />)}
+                {categories.map((category, i) => <Category category={category} key={i} hideMobile={i > 2 ? true : false} />)}
             </div>
             <Form />
         </div>
