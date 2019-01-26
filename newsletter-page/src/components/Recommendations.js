@@ -87,6 +87,7 @@ class Recommendations extends Component {
           <Form
             selected={this.state.selected}
             handleSubmitCheck={this.handleSubmitCheck}
+            handleSubmitted={this.props.handleSubmitted}
           />
         ) : (
           ""

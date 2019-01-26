@@ -17,6 +17,7 @@
 
   h4 {
     font-size: 14px;
+    font-weight: 500;
 
     @include tablet {
       font-size: 16px;
@@ -185,16 +186,87 @@
 
       input {
         width: 100%;
-        height: 60px;
+        height: 44px;
         font-size: 14px;
         font-weight: 500;
         color: $grey;
         padding: 18px;
-        border: 1px solid $light-grey;
+        border: 1px solid $white;
+
+        @include lg-mobile {
+          height: 60px;
+        }
 
         &:focus {
           outline: none;
           border: 1px solid $blue;
+        }
+      }
+
+      .tAndC {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+
+        input {
+          position: absolute;
+          margin: 0;
+          opacity: 0;
+          top: 10px;
+          left: 14px;
+          height: 20px;
+          width: 20px;
+          z-index: 2;
+
+          &:hover {
+            cursor: pointer;
+
+            &~.tc-checkmark {
+              border: 1px solid $blue;
+            }
+          }
+
+          &:checked {
+            &~.tc-checkmark {
+              background: $grey;
+              border: 1px solid $grey;
+
+              &:before {
+                display: block;
+              }
+            }
+          }
+        }
+
+        .tc-checkmark {
+          position: absolute;
+          background: $white;
+          top: 10px;
+          left: 14px;
+          height: 20px;
+          width: 20px;
+          border: 1px solid #cdcdcd;
+
+          &:before {
+            content: "";
+            position: absolute;
+            display: none;
+            background: url("/images/tick.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 60%;
+            height: 20px;
+            width: 20px;
+          }
+        }
+
+        p {
+          margin: 11px 0 0 0;
+          padding-left: 45px;
+          text-align: left;
+          .privacy-pol {
+            text-decoration: underline;
+          }
         }
       }
 
@@ -222,6 +294,10 @@
           margin: 0;
           grid-area: 2 / 7 / 2 / 10;
         }
+
+        .tAndC {
+          grid-area: 3 / 3 / 3 / 9;
+        }
       }
 
       @include lg-tablet {
@@ -239,6 +315,7 @@
     color: $white;
     width: 100%;
     margin: 10px auto;
+    transition: background 0.2s ease-in-out;
 
     &:hover {
       cursor: pointer;
@@ -281,15 +358,20 @@
     color: $grey;
   }
 
+  .center {
+    text-align: center;
+  }
+
   .error-text {
     color: $red;
     font-size: 14px;
     font-weight: 600;
+    margin: 10px 0 0 0;
   }
+
   .Form {
     @include tablet {
       text-align: left;
-      padding-left: 10px;
     }
   }
 }

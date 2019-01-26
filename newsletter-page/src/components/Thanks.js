@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
-// import './App.scss';
+import React from "react";
 
-class Thanks extends Component {
-    render() {
-        return (
-            <div className="Thanks" >
-
-            </div>
-        );
-    }
-}
+const Thanks = () => {
+  return (
+      <div className="Thanks">
+      <h1>Thanks</h1>
+      </div>
+  )
+};
 
 export default Thanks;
