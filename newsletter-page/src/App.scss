@@ -307,6 +307,39 @@
     }
   }
 
+  .Thanks {
+    height: 100vh;
+    background: $thanks-green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      margin: 15px 25px;
+      & .white {
+        font-size: 48px;
+        color: $white;
+      }
+    } 
+    @include tablet {
+      h1 {
+        text-align: left;
+        margin-left: 230px;
+        font-size: 52px;
+        max-width: 530px;
+        & .white {
+          font-size: 60px;
+          color: $white;
+        }
+      }
+      img {
+        float: left;
+      }
+    }
+    img {
+      height: 280px;
+    }
+  }
+
   .btn {
     background: $red;
     height: 44px;
