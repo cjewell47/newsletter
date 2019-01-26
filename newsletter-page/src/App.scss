@@ -1,14 +1,4 @@
-$light-blue: #b4d8e6;
-$white: #fff;
-$grey: #565656;
-$light-grey: #cdcdcd;
-$blue: #0076dc;
-$light-green: #8bb756;
-$red: #e30613;
-$large-tablet: 1024px;
-$tablet: 768px;
-$large-mobile: 450px;
-$mobile: 320px;
+@import "variables";
 
 * {
   box-sizing: border-box;
@@ -19,10 +9,16 @@ $mobile: 320px;
   .Recommendations {
     background-color: $light-blue;
     padding: 50px 15px;
+    h1 {
+      font-size: 30px;
+      @include tablet {
+        font-size: 40px;
+      }
+    }
     h1,
     h4 {
       margin: auto;
-      padding: 0 30px 25px;
+      padding: 0 15px 25px;
     }
     .categories-container {
       @supports (display: grid) {
@@ -34,17 +30,17 @@ $mobile: 320px;
         overflow: hidden;
         grid-template-columns: 1fr;
         height: 638px;
-        @media (min-width: $large-mobile) {
+        @include lg-mobile {
           height: 830px;
         }
-        @media (min-width: $tablet) {
+        @include tablet {
           grid-template-columns: 1fr 1fr;
           height: 410px;
         }
-        @media (min-width: $large-tablet) {
-          grid-gap: 20px;
-          grid-template-columns: repeat(3, minmax(300px, 1fr));
-          height: 300px;
+        @include lg-tablet {
+             grid-gap: 20px;
+             grid-template-columns: repeat(3, minmax(300px, 1fr));
+             height: 300px;
         }
       }
 
@@ -55,7 +51,7 @@ $mobile: 320px;
         display: inline-flex;
         justify-content: space-between;
         align-items: center;
-        @media (min-width: $large-mobile) {
+        @include lg-mobile {
           height: 60px;
           padding: 0 18px;
         }
@@ -63,17 +59,21 @@ $mobile: 320px;
           cursor: pointer;
           -webkit-user-select: none;
           user-select: none;
-          display: block;
+          display: flex;
           position: relative;
-          padding-left: 35px;
-          top: -9px;
+          width: 100%;
+          height: 100%;
+          justify-content: space-between;
           .category-checkmark {
             position: absolute;
-            top: -4px;
+            top: 10px;
             left: 0;
             height: 25px;
             width: 25px;
             border: 1px solid $light-grey;
+            @include lg-mobile {
+              top: 17px;
+            }
             &:before {
               content: "";
               position: absolute;
@@ -85,21 +85,16 @@ $mobile: 320px;
               height: 25px;
               width: 25px;
             }
-            &:after {
-              content: attr(data-label);
-              display: block;
-              position: absolute;
-              left: 35px;
-              top: 3px;
-              color: $grey;
-              width: 200px;
-              text-align: left;
-              font-weight: 600;
-              font-size: 14px;
-              transition: all 0.2s ease-in-out;
-              @media (min-width: $tablet) {
-                font-size: 16px;
-              }
+          }
+          .category-label {
+            font-size: 14px;
+            color: $grey;
+            font-weight: 600;
+            align-self: center;
+            padding-left: 32px;
+            transition: all 0.2s ease-in-out;
+            @include tablet {
+              font-size: 16px;
             }
           }
           input {
@@ -110,12 +105,14 @@ $mobile: 320px;
             &:hover ~ .category-checkmark {
               border: 1px solid $blue;
             }
-            &:checked ~ .category-checkmark {
-              background: $light-green;
-              &:before {
-                display: block;
+            &:checked {
+              & ~ .category-checkmark {
+                background: $light-green;
+                &:before {
+                  display: block;
+                }
               }
-              &:after {
+              & ~ .category-label {
                 color: $light-green;
                 font-weight: 700;
               }
@@ -124,12 +121,13 @@ $mobile: 320px;
         }
         .category-logo {
           height: 30px;
-          @media (min-width: $large-mobile) {
+          align-self: center;
+          @include lg-mobile {
             height: 40px;
           }
         }
       }
-      &.hidden {
+      &.hidden-mob {
         @media (max-width: $tablet - 1) {
           height: 200px;
         }
@@ -150,10 +148,10 @@ $mobile: 320px;
     &:focus {
       outline: none;
     }
-    @media (min-width: $large-mobile) {
+    @include lg-mobile {
       height: 60px;
     }
-    @media (min-width: $tablet) {
+    @include tablet {
       display: none;
     }
   }

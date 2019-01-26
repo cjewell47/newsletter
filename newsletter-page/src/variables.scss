@@ -1,0 +1,28 @@
+$light-blue: #b4d8e6;
+$white: #fff;
+$grey: #565656;
+$light-grey: #cdcdcd;
+$blue: #0076dc;
+$light-green: #8bb756;
+$red: #e30613;
+$large-tablet: 1024px;
+$tablet: 768px;
+$large-mobile: 450px;
+
+@mixin lg-mobile {
+    @media (min-width: $large-mobile) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin lg-tablet {
+    @media (min-width: $large-tablet) {
+        @content;
+    }
+}

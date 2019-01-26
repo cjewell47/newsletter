@@ -48,7 +48,7 @@ class Recommendations extends Component {
         </h4>
         <div
           className={
-            "categories-container " + (this.state.hidden ? "hidden" : "")
+            "categories-container " + (this.state.hidden ? "hidden-mob" : "")
           }
         >
           {this.state.categories.map((category, i) => (
