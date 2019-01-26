@@ -8,8 +8,7 @@ class Recommendations extends Component {
     categories: Categories,
     hidden: true,
     selected: [],
-    showForm: false,
-    errors: []
+    showForm: false
   };
   showMore = () => {
     this.setState({
@@ -68,7 +67,7 @@ class Recommendations extends Component {
         ) : (
           ""
         )}
-        {this.state.showForm ? <Form selected={this.state.selected} errors={this.state.errors} /> : ""}
+        {this.state.showForm ? <Form selected={this.state.selected} /> : ""}
       </div>
     );
   }
