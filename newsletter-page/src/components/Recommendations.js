@@ -6,12 +6,36 @@ import Form from "./Form.js";
 class Recommendations extends Component {
   state = {
     categories: Categories,
-    hidden: true
+    hidden: true,
+    selected: [],
+    showForm: false
   };
-  showMore = e => {
+  showMore = () => {
     this.setState({
-      hidden: !this.state.hidden
+      hidden: false
     });
+  };
+  handleCheck = e => {
+    const id = e.target.closest("label").id;
+    if (e.target.checked) {
+      let selected = [...this.state.selected, id];
+      this.setState({
+        selected
+      });
+    } else if (!e.target.checked) {
+      const selected = this.state.selected.filter(sId => {
+        return sId !== id;
+      });
+      this.setState({
+        selected
+      });
+    }
+
+    if (!this.state.showForm) {
+      this.setState({
+        showForm: true
+      });
+    }
   };
 
   render() {
@@ -28,13 +52,22 @@ class Recommendations extends Component {
           }
         >
           {this.state.categories.map((category, i) => (
-            <Category category={category} key={i} />
+            <Category
+              category={category}
+              key={i}
+              catId={i}
+              handleCheck={this.handleCheck}
+            />
           ))}
         </div>
-        <button className="btn" onClick={this.showMore}>
-          {this.state.hidden ? 'Show all categories' : 'Show less'}
-        </button>
-        <Form />
+        {this.state.hidden ? (
+          <button className="btn" onClick={this.showMore}>
+            Show all categories
+          </button>
+        ) : (
+          ""
+        )}
+        {this.state.showForm ? <Form /> : ""}
       </div>
     );
   }

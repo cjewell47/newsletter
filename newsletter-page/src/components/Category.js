@@ -1,10 +1,10 @@
 import React from "react";
 
-const Category = props => {
-  const { category } = props;
+const Category = ({ category, catId, handleCheck }) => {
+
   return (
     <div className="Category">
-      <label className="category-checkbox">
+      <label className="category-checkbox" id={catId} onClick={handleCheck}>
         <input type="checkbox" />
         <span className="category-checkmark" data-label={category.name} />
       </label>
