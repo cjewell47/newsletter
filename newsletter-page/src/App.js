@@ -5,7 +5,7 @@ import Thanks from "./components/Thanks.js";
 
 class App extends Component {
   state = {
-    submitted: true
+    submitted: false
   };
 
   handleSubitted = () => {
