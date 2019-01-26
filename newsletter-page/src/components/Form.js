@@ -17,7 +17,7 @@ class Form extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const errors = {};
-    
+
     if (this.props.selected.length === 0) {
       this.props.handleSubmitCheck();
     }
@@ -31,8 +31,14 @@ class Form extends Component {
       errors: errors
     });
 
-      if (!errors.first && !errors.last && !errors.email && !errors.privacy && this.props.selected.length !== 0) {
-        this.props.handleSubmitted()
+    if (
+      !errors.first &&
+      !errors.last &&
+      !errors.email &&
+      !errors.privacy &&
+      this.props.selected.length !== 0
+    ) {
+      this.props.handleSubmitted();
     }
   };
 

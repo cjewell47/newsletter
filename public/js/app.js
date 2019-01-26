@@ -1,1 +1,0 @@
-"use strict";var newsletter=newsletter||{};newsletter.init=function(){document.querySelector("h1").addEventListener("click",function(){document.querySelector("h1").insertAdjacentHTML("afterend","<p>YOOO</p>")})},newsletter.init();

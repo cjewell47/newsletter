@@ -9,7 +9,7 @@ class Recommendations extends Component {
     hidden: true,
     selected: [],
     showForm: false,
-    selectedNone: false
+    selectedErr: false
   };
 
   showMore = () => {
@@ -38,13 +38,13 @@ class Recommendations extends Component {
       this.setState({ showForm: true });
     }
 
-    if (this.state.selectedNone) {
-      this.setState({ selectedNone: false });
+    if (this.state.selectedErr) {
+      this.setState({ selectedErr: false });
     }
   };
 
   handleSubmitCheck = () => {
-    this.setState({ selectedNone: true });
+    this.setState({ selectedErr: true });
   };
 
   render() {
@@ -76,7 +76,7 @@ class Recommendations extends Component {
         ) : (
           ""
         )}
-        {this.state.selectedNone ? (
+        {this.state.selectedErr ? (
           <p className="error-text">
             Please select at least one category above
           </p>
