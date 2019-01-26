@@ -8,13 +8,16 @@ class Recommendations extends Component {
     categories: Categories,
     hidden: true,
     selected: [],
-    showForm: false
+    showForm: false,
+    selectedNone: false
   };
+
   showMore = () => {
     this.setState({
       hidden: false
     });
   };
+
   handleCheck = e => {
     const id = e.target.closest("label").id;
     if (e.target.checked) {
@@ -32,10 +35,16 @@ class Recommendations extends Component {
     }
 
     if (!this.state.showForm) {
-      this.setState({
-        showForm: true
-      });
+      this.setState({ showForm: true });
     }
+
+    if (this.state.selectedNone) {
+      this.setState({ selectedNone: false });
+    }
+  };
+
+  handleSubmitCheck = () => {
+    this.setState({ selectedNone: true });
   };
 
   render() {
@@ -67,7 +76,21 @@ class Recommendations extends Component {
         ) : (
           ""
         )}
-        {this.state.showForm ? <Form selected={this.state.selected} /> : ""}
+        {this.state.selectedNone ? (
+          <p className="error-text">
+            Please select at least one category above
+          </p>
+        ) : (
+          ""
+        )}
+        {this.state.showForm ? (
+          <Form
+            selected={this.state.selected}
+            handleSubmitCheck={this.handleSubmitCheck}
+          />
+        ) : (
+          ""
+        )}
       </div>
     );
   }
