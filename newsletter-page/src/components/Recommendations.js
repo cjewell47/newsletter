@@ -8,7 +8,8 @@ class Recommendations extends Component {
     categories: Categories,
     hidden: true,
     selected: [],
-    showForm: false
+    showForm: false,
+    errors: []
   };
   showMore = () => {
     this.setState({
@@ -61,13 +62,13 @@ class Recommendations extends Component {
           ))}
         </div>
         {this.state.hidden ? (
-          <button className="btn" onClick={this.showMore}>
+          <button className="btn show-more" onClick={this.showMore}>
             Show all categories
           </button>
         ) : (
           ""
         )}
-        {this.state.showForm ? <Form /> : ""}
+        {this.state.showForm ? <Form selected={this.state.selected} errors={this.state.errors} /> : ""}
       </div>
     );
   }

@@ -3,23 +3,37 @@
 * {
   box-sizing: border-box;
 }
+
 .App {
   text-align: center;
+
+  h1 {
+    font-size: 30px;
+
+    @include tablet {
+      font-size: 40px;
+    }
+  }
+
+  h4 {
+    font-size: 14px;
+
+    @include tablet {
+      font-size: 16px;
+    }
+  }
 
   .Recommendations {
     background-color: $light-blue;
     padding: 50px 15px;
-    h1 {
-      font-size: 30px;
-      @include tablet {
-        font-size: 40px;
-      }
-    }
+    min-height: 100vh;
+
     h1,
     h4 {
       margin: auto;
       padding: 0 15px 25px;
     }
+
     .categories-container {
       @supports (display: grid) {
         display: grid;
@@ -30,31 +44,34 @@
         overflow: hidden;
         grid-template-columns: 1fr;
         height: 638px;
+
         @include lg-mobile {
           height: 830px;
         }
+
         @include tablet {
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: repeat(2, 1fr);
           height: 410px;
         }
+
         @include lg-tablet {
-             grid-gap: 20px;
-             grid-template-columns: repeat(3, minmax(300px, 1fr));
-             height: 300px;
+          grid-gap: 20px;
+          grid-template-columns: repeat(3, minmax(300px, 1fr));
+          height: 300px;
         }
       }
 
       .Category {
         background: $white;
         height: 44px;
-        padding: 0 14px;
         display: inline-flex;
         justify-content: space-between;
         align-items: center;
+
         @include lg-mobile {
           height: 60px;
-          padding: 0 18px;
         }
+
         .category-checkbox {
           cursor: pointer;
           -webkit-user-select: none;
@@ -63,17 +80,26 @@
           position: relative;
           width: 100%;
           height: 100%;
+          padding: 0 14px;
           justify-content: space-between;
+
+          @include lg-mobile {
+            padding: 0 18px;
+          }
+
           .category-checkmark {
             position: absolute;
             top: 10px;
-            left: 0;
+            left: 14px;
             height: 25px;
             width: 25px;
             border: 1px solid $light-grey;
+
             @include lg-mobile {
+              left: 18px;
               top: 17px;
             }
+
             &:before {
               content: "";
               position: absolute;
@@ -86,75 +112,164 @@
               width: 25px;
             }
           }
+
           .category-label {
             font-size: 14px;
             color: $grey;
-            font-weight: 600;
+            font-weight: 500;
             align-self: center;
             padding-left: 32px;
             transition: all 0.2s ease-in-out;
+
             @include tablet {
               font-size: 16px;
             }
           }
+
           input {
             position: absolute;
             opacity: 0;
             height: 0;
             width: 0;
-            &:hover ~ .category-checkmark {
+
+            &:hover~.category-checkmark {
               border: 1px solid $blue;
             }
+
             &:checked {
-              & ~ .category-checkmark {
+              &~.category-checkmark {
                 background: $light-green;
+
                 &:before {
                   display: block;
                 }
               }
-              & ~ .category-label {
+
+              &~.category-label {
                 color: $light-green;
                 font-weight: 700;
               }
             }
           }
         }
+
         .category-logo {
           height: 30px;
           align-self: center;
+
           @include lg-mobile {
             height: 40px;
           }
         }
       }
+
       &.hidden-mob {
         @media (max-width: $tablet - 1) {
           height: 200px;
         }
+
         @media (max-width: $large-mobile - 1) {
           height: 152px;
         }
       }
     }
   }
+
+  .Form {
+    margin-top: 40px;
+    form {
+      margin: auto;
+      display: grid;
+      grid-gap: 10px;
+      input {
+        width: 100%;
+        height: 60px;
+        font-size: 14px;
+        font-weight: 500;
+        color: $grey;
+        padding: 18px;
+        border: 1px solid $light-grey;
+
+        &:focus {
+          outline: none;
+          border: 1px solid $blue;
+        }
+      }
+
+      @include tablet {
+        width: 650px;
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 10px;
+        font-size: 16px;
+
+        .input-cont-first-name {
+          grid-area: 1 / 1 / 1 / 6;
+        }
+
+        .input-cont-last-name {
+          grid-area: 1 / 6 / 1 / 11;
+        }
+
+        .input-cont-email {
+          grid-area: 2 / 2 / 2 / 7;
+        }
+
+        .input-button {
+          margin: 0;
+          grid-area: 2 / 7 / 2 / 10;
+        }
+      }
+      @include lg-tablet {
+        width: 800px;
+        grid-gap: 20px;
+      }
+    }
+  }
+
   .btn {
-    background: red;
+    background: $red;
     height: 44px;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     color: $white;
     width: 100%;
     margin: 10px auto;
+    &:hover {
+      cursor: pointer;
+    }
+
     &:focus {
       outline: none;
     }
+
     @include lg-mobile {
+      font-size: 16px;
       height: 60px;
     }
-    @include tablet {
-      display: none;
+
+    &.show-more {
+      position: relative;
+      padding-right: 20px;
+      @include tablet {
+        display: none;
+      }
+      &:after {
+       content: "";
+       position: absolute;
+       display: block;
+       background: url("/images/down.svg");
+       background-repeat: no-repeat;
+       background-size: 50%;
+       height: 20px;
+       width: 20px;
+       right: 55px;
+       top: 45%;
+      }
     }
   }
+
   .grey {
     color: $grey;
   }
