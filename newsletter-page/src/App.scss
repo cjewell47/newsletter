@@ -35,34 +35,32 @@
       padding: 0 15px 25px;
     }
 
+
+    // STYLES FOR NON CSS GRID SUPPORT
+    // It still works - but doesn't look quite as sharp
     .categories-container {
-      @supports (display: grid) {
-        display: grid;
-        grid-gap: 10px;
-        max-width: 1400px;
-        margin: auto;
-        transition: height 0.6s ease-in-out;
-        overflow: hidden;
-        grid-template-columns: 1fr;
-        height: 638px;
+      display: block;
+      max-width: 1400px;
+      margin: auto;
+      transition: height 0.6s ease-in-out;
+      overflow: hidden;
+      height: 638px;
 
-        @include lg-mobile {
-          height: 830px;
-        }
+      @include lg-mobile {
+        height: 830px;
+      }
 
-        @include tablet {
-          grid-template-columns: repeat(2, 1fr);
-          height: 410px;
-        }
+      @include tablet {
+        height: 410px;
+      }
 
-        @include lg-tablet {
-          grid-gap: 20px;
-          grid-template-columns: repeat(3, minmax(300px, 1fr));
-          height: 300px;
-        }
+      @include lg-tablet {
+        height: 300px;
       }
 
       .Category {
+        width: 95%;
+        margin: 4px;
         background: $white;
         height: 44px;
         display: inline-flex;
@@ -71,6 +69,15 @@
 
         @include lg-mobile {
           height: 60px;
+        }
+
+        @include tablet {
+          width: 45%;
+          margin: 10px;
+        }
+
+        @include lg-tablet {
+          width: 30%;
         }
 
         .category-checkbox {
@@ -161,6 +168,31 @@
           @include lg-mobile {
             height: 40px;
           }
+        }
+
+
+
+      }
+
+      // CSS GRID SUPPORT STYLES
+      // much nicer
+      @supports (display: grid) {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1fr;
+
+        @include tablet {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include lg-tablet {
+          grid-gap: 20px;
+          grid-template-columns: repeat(3, minmax(300px, 1fr));
+        }
+
+        .Category {
+          margin: 0;
+          width: 100%;
         }
       }
 
@@ -264,6 +296,7 @@
           margin: 11px 0 0 0;
           padding-left: 45px;
           text-align: left;
+
           .privacy-pol {
             text-decoration: underline;
           }
@@ -313,28 +346,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     h1 {
       margin: 15px 25px;
+
       & .white {
         font-size: 48px;
         color: $white;
       }
-    } 
+    }
+
     @include tablet {
       h1 {
         text-align: left;
         margin-left: 230px;
         font-size: 52px;
         max-width: 530px;
+
         & .white {
           font-size: 60px;
           color: $white;
         }
       }
+
       img {
         float: left;
       }
     }
+
     img {
       height: 280px;
     }
